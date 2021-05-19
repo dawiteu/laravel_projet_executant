@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             "email" => "admin@admin.be", 
             "password" => Hash::make('admin1'),
             "prenom" => "Dawid", 
-            "age" => 18, 
+            "age" => 1997, 
             "avatar_id" => 1, 
             "role_id" => 1,
             "created_at" => now() 
