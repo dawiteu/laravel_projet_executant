@@ -14,7 +14,9 @@ class AvatarController extends Controller
      */
     public function index()
     {
-        //
+        $avs = Avatar::paginate(15); 
+
+        return view('admin.avatar.index', compact('avs'));
     }
 
     /**

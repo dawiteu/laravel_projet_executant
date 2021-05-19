@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\AvatarController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +21,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::resource('/admin/avatar', AvatarController::class);
+
+
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+

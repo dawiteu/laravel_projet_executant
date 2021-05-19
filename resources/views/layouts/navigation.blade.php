@@ -16,6 +16,34 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                @auth
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Gallerie') }}
+                        </x-nav-link>
+                    </div>
+                @endauth 
+
+                @if ( Auth::User()->role->nom == 'admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('avatar.index')" :active="request()->routeIs('avatar.index')">
+                            {{ __('Avatars') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Images') }}
+                        </x-nav-link>
+                    </div>
+
+
+                @endif
+                {{--@isAdmin 
+                    na na na 
+                @endisAdmin --}}
+
             </div>
 
             <!-- Settings Dropdown -->
