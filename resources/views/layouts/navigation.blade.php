@@ -1,14 +1,14 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 flex w-32 bg-green">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="background-color:orange;">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
+                <!-- Logo 
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
-                </div>
+                </div>-->
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -44,7 +44,7 @@
                     na na na 
                 @endisAdmin --}}
 
-            </div>
+            {{-- </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -125,4 +125,28 @@
             </div>
         </div>
     </div>
+</nav> --}} 
+
+
+<nav class="bg-gray-800 w-64 p-7">
+    <div class="p-5 shadow-xl rounded-md mx-auto text-center text-white">
+        <p>Bonjour,</p>
+        <p class="text-center">{{ Auth::User()->prenom}} {{ Auth::User()->name}}</p>
+        <img class="w-32 h-32 rounded-full mx-auto" src="{{ asset('img/avs/'. Auth::User()->avatar->name)}}" alt="{{Auth::User()->name}}">
+
+        <div class="mt-3 space-y-1">
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-responsive-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log out') }}
+                </x-responsive-nav-link>
+            </form>
+        </div>    
+    </div>
+
+
 </nav>
