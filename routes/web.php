@@ -23,13 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/admin/avatar', AvatarController::class);
+    Route::get('/admin/avatar/download/{id}', [AvatarController::class, 'download'])->name('avatar.download'); 
 
-Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth']);
-Route::get('/admin/avatar/download/{id}', [AvatarController::class, 'download'])->middleware(['auth'])->name('avatar.download'); 
+    Route::resource('/admin/image', ImageController::class);
+    Route::resource('/admin/categorie', CategorieController::class);
+    Route::resource('/admin/user', UserController::class); //,'isAdmin'    
+});
 
-Route::resource('/admin/image', ImageController::class)->middleware(['auth']);;
-Route::resource('/admin/categorie', CategorieController::class)->middleware(['auth']);;
-Route::resource('/admin/user', UserController::class)->middleware(['auth']); //,'isAdmin'
 
 
 

@@ -9,7 +9,7 @@ class Categorie extends Model
 {
     use HasFactory;
 
-    public function image(){
+    public function images(){
         return $this->hasMany(Image::class);
     }
 }

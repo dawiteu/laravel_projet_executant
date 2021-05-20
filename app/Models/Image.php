@@ -10,6 +10,6 @@ class Image extends Model
     use HasFactory;
 
     public function categorie(){
-        return $this->belongsTo(Categorie::class); 
+        return $this->belongsTo(Categorie::class, 'cat_id'); 
     }
 }

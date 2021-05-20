@@ -31,7 +31,7 @@
             <!-- Page Content -->
             <main class="flex flex-col mx-auto">
                     <div class="w-4/5 mx-auto mt-5 ">@include('layouts.flash')</div> 
-                    <div>
+                    <div class="w-10/11 mt-5">
                         {{ $slot }}
                     </div>
             </main>

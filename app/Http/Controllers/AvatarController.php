@@ -18,6 +18,7 @@ class AvatarController extends Controller
      */
     public function index()
     {
+        $this->authorize('isAdmin');
         $avs = Avatar::paginate(5); 
 
         return view('admin.avatar.index', compact('avs'));

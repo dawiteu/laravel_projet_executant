@@ -13,7 +13,7 @@
             @foreach ($imgs as $img)
                 <div class="bg-white rounded-md m-5 p-10 flex flex-col text-center">
                     <p>Nom: {{$img->nom}}</p>
-                    <p>Catégorie: {{ dd($img->categorie) }} </p>
+                    <p>Catégorie: {{ $img->categorie->nom }} </p>
                     <img class="w-32 h-32 rounded-md mx-auto" src="{{ asset('img/photos/'.$img->lien)}}" />
                     <div class="flex justify-center">
                         <a href="{{route('image.edit', $img->id)}}" class="btn bg-yellow-500 p-1 m-2 rounded-sm text-white">M</a>
