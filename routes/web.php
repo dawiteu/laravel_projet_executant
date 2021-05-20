@@ -27,9 +27,9 @@ Route::get('/', function () {
 Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth']);
 Route::get('/admin/avatar/download/{id}', [AvatarController::class, 'download'])->middleware(['auth'])->name('avatar.download'); 
 
-Route::resource('/admin/image', ImageController::class);
-Route::resource('/admin/categorie', CategorieController::class);
-Route::resource('/admin/user', UserController::class);
+Route::resource('/admin/image', ImageController::class)->middleware(['auth']);;
+Route::resource('/admin/categorie', CategorieController::class)->middleware(['auth']);;
+Route::resource('/admin/user', UserController::class)->middleware(['auth']); //,'isAdmin'
 
 
 

@@ -125,8 +125,7 @@ class AvatarController extends Controller
 
 
     //marche pas 
-    public function download(Avatar $avatar){ 
-        dd($avatar); 
-        return Storage::download('/img/avs/'. $avatar->name);
+    public function download($avatar){ 
+        return Storage::disk('public')->download('/img/avs/'. $avatar);
     }
 }

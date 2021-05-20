@@ -63,7 +63,7 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        return view('admin.categorie.edit', compact('categorie'));
     }
 
     /**
@@ -75,7 +75,14 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        //
+        $request->validate([
+            "nom" => "required"
+        ]); 
+
+        $categorie->nom = $request->nom; 
+        $categorie->save();
+
+        return redirect() -> route('categorie.index')->with('success','Catégorie bien modifiée.');
     }
 
     /**

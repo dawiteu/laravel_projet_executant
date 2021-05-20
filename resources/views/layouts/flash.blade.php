@@ -6,10 +6,10 @@
 @endif
 
 @if ($message = Session::get('error'))
-<div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{$message}}</strong>
-</div>
+    <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{$message}}</strong>
+    </div>
 @endif
 
 {{-- MESSAGE ERRORS  (à choisir entre ce message sous forme de liste ou les messages d'erreurs en dessous de l'input) 

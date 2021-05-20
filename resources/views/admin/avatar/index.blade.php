@@ -13,7 +13,7 @@
                     <p>Nom: {{$av->nom}}</p>
                     <p>Envoyer par: {{ $av->prov == 'admin' ? 'défaut' : "user id(".$av->user[0]->id.")"  }}</p>
                     <div class="flex justify-center"> 
-                        <a href="{{route('avatar.download', $av->id)}} " class="btn bg-pink-500 p-1 m-2 rounded-sm text-white">T</a>
+                        <a href="{{route('avatar.download', $av->name)}} " class="btn bg-pink-500 p-1 m-2 rounded-sm text-white">T</a>
                         <a href="{{route('avatar.edit', $av->id)}}" class="btn bg-yellow-500 p-1 m-2 rounded-sm text-white">M</a>
                         <form action="{{route('avatar.destroy', $av->id)}}" method="POST" class="inline">
                             @csrf

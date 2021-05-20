@@ -16,6 +16,7 @@
                                 </p>
                             @enderror
                         </div>
+
                         <div class="mt-5 text-center">
                             <input type="submit" value="Ajouter >> " class="bg-green-400 p-2 rounded-md">
                         </div>
