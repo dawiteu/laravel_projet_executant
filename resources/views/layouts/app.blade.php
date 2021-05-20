@@ -29,8 +29,11 @@
             </header> --}}
 
             <!-- Page Content -->
-            <main class="flex mx-auto">
-                {{ $slot }}
+            <main class="flex flex-col mx-auto">
+                    <div class="w-4/5 mx-auto mt-5 ">@include('layouts.flash')</div> 
+                    <div>
+                        {{ $slot }}
+                    </div>
             </main>
         </div>
     </body>

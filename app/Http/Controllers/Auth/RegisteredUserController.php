@@ -69,9 +69,11 @@ class RegisteredUserController extends Controller
             'role_id' => 2, //user par def 
         ]);
 
-        if(event(new Registered($user))){
-            DB::insert('insert into avatarsrel (uploader_id, avatar_id) values ('.$user->id.', '.$imgid.')', [1, 'Dayle']);
-        }
+        // if(event(new Registered($user))){
+        //     DB::insert('insert into avatarsrel (uploader_id, avatar_id) values ('.$user->id.', '.$imgid.')', [1, 'Dayle']);
+        // }
+
+        event(new Registered($user));
 
         Auth::login($user);
 

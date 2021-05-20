@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AvatarRequest;
 use App\Models\Avatar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -14,7 +18,7 @@ class AvatarController extends Controller
      */
     public function index()
     {
-        $avs = Avatar::paginate(15); 
+        $avs = Avatar::paginate(5); 
 
         return view('admin.avatar.index', compact('avs'));
     }
@@ -26,7 +30,14 @@ class AvatarController extends Controller
      */
     public function create()
     {
-        //
+        $avatars = Avatar::all()->where('prov', 'admin'); 
+
+        if(count($avatars) < 5){
+            return view('admin.avatar.add', compact('avatars'));
+        }else{
+            return redirect()->route('avatar.index')->with('error', 'Impossible d4ajouter plus de 5 avatars'); 
+        }
+        
     }
 
     /**
@@ -35,9 +46,21 @@ class AvatarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AvatarRequest $request)
     {
-        //
+        $av = new Avatar(); 
+        
+        $av->nom = $request->nom; 
+        if ($request->file('img') != NULL) {
+            $request->file('img')->storePublicly('img/avs/','public');
+            $av->name = $request->file('img')->hashName();
+        }
+        $av->prov = 'admin'; 
+        $av->save(); 
+
+        //DB::insert('insert into avatarsrel (uploader_id, avatar_id) values ('.Auth::user()->id.','.$av->id.')', [1, 'Dayle']);
+
+        return redirect()->route('avatar.index')->with('success', 'Avatar bien enregistré!');
     }
 
     /**
@@ -59,7 +82,7 @@ class AvatarController extends Controller
      */
     public function edit(Avatar $avatar)
     {
-        //
+        return view('admin.avatar.edit', compact('avatar')); 
     }
 
     /**
@@ -71,7 +94,20 @@ class AvatarController extends Controller
      */
     public function update(Request $request, Avatar $avatar)
     {
-        //
+        $request->validate([
+            "nom" => "required", 
+        ]);
+
+        $avatar->nom = $request->nom; 
+
+        if ($request->file('img') != NULL) {
+            $request->file('img')->storePublicly('img/avs/','public');
+            $avatar->name = $request->file('img')->hashName();
+        }
+
+        $avatar->save(); 
+
+        return redirect()->route('avatar.index')->with('success', 'Avatar bien modifié.');
     }
 
     /**
@@ -82,6 +118,15 @@ class AvatarController extends Controller
      */
     public function destroy(Avatar $avatar)
     {
-        //
+        //Storage::delete("public/img/avs/".$avatar->name);
+        $avatar->delete(); 
+        return redirect()->route('avatar.index');
+    }
+
+
+    //marche pas 
+    public function download(Avatar $avatar){ 
+        dd($avatar); 
+        return Storage::download('/img/avs/'. $avatar->name);
     }
 }

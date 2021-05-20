@@ -138,14 +138,45 @@
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-
                 <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
                     {{ __('Log out') }}
                 </x-responsive-nav-link>
             </form>
-        </div>    
+
+            <hr/> 
+
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('abc')">
+                {{ __('Galerie') }}
+            </x-responsive-nav-link>
+
+            @if ( Auth::User()->role->nom == 'admin')
+
+            <x-responsive-nav-link :href="route('avatar.index')" :active="request()->routeIs('avatar.index')">
+                {{ __('Avatars') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('image.index')" :active="request()->routeIs('image.index')">
+                {{ __('Images') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('categorie.index')" :active="request()->routeIs('categorie.index')">
+                {{ __('Catégories') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                {{ __('Users') }}
+            </x-responsive-nav-link>
+
+            @endif  
+
+        </div>   
+
     </div>
 
 

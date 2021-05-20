@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategorieRequest;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Categorie::all(); 
+        return view('admin.categorie.index', compact('cats'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorie.add');
     }
 
     /**
@@ -33,9 +35,13 @@ class CategorieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategorieRequest $request)
     {
-        //
+        $cat = new Categorie(); 
+        $cat->nom = $request->nom; 
+        $cat->save(); 
+        return redirect()->route('categorie.index')->with('success','Catégorie bien ajoutée.');
+        
     }
 
     /**

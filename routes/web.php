@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AvatarController;
-
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,13 @@ Route::get('/', function () {
 });
 
 
-Route::resource('/admin/avatar', AvatarController::class);
+Route::resource('/admin/avatar', AvatarController::class)->middleware(['auth']);
+Route::get('/admin/avatar/download/{id}', [AvatarController::class, 'download'])->middleware(['auth'])->name('avatar.download'); 
+
+Route::resource('/admin/image', ImageController::class);
+Route::resource('/admin/categorie', CategorieController::class);
+Route::resource('/admin/user', UserController::class);
+
 
 
 Route::get('/admin/dashboard', function () {

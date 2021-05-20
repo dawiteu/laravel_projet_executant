@@ -13,12 +13,12 @@ class CreateAvatarsrelTable extends Migration
      */
     public function up()
     {
-        Schema::create('avatarsrel', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('uploader_id')->constrained('users','id'); 
-            $table->foreignId('avatar_id')->constrained('avatars', 'id'); 
-            $table->timestamps();
-        });
+        //Schema::create('avatarsrel', function (Blueprint $table) {
+        //    $table->id();
+        //    $table->foreignId('uploader_id')->constrained('users','id'); 
+        //    $table->foreignId('avatar_id')->constrained('avatars', 'id'); 
+        //   $table->timestamps();
+        //});
     }
 
     /**
