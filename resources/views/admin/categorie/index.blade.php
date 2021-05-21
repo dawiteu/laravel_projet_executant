@@ -13,7 +13,7 @@
                     <div class="flex justify-center"> 
                         @if ($cat->id > 1)
                             <a href="{{route('categorie.edit', $cat->id)}}" class="btn bg-yellow-500 p-1 m-2 rounded-sm text-white">M</a>
-                            <form action="{{route('avatar.destroy', $cat->id)}}" method="POST" class="inline">
+                            <form action="{{route('categorie.destroy', $cat->id)}}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn bg-red-500 p-1 m-2 rounded-sm text-white">X</button>

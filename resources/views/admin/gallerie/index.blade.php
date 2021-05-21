@@ -17,6 +17,9 @@
                         @endif
 
                         <p>Nombre d'images: {{ $cat->images->count() }} </p>
+                        @if ($cat->images->count() > 0)
+                            <a class="bg-gray-300 p-2" href="{{route('gallerie.show', $cat->id )}}">voir la gallerie</a>
+                        @endif
                     </div>     
                 {{-- @endif --}}
             @endforeach

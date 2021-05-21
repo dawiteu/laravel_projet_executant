@@ -16,7 +16,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $imgs = Image::paginate(15); 
+        $imgs = Image::paginate(6); 
         return view('admin.image.index', compact('imgs')); 
     }
 
@@ -74,7 +74,8 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        //
+        $cats = Categorie::all();
+        return view('admin.image.edit', compact('image', 'cats')); 
     }
 
     /**
@@ -84,9 +85,17 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(ImageRequest $request, Image $image)
     {
-        //
+        $image->nom = $request->nom; 
+        if ($request->file('img') != NULL) {
+            $request->file('img')->storePublicly('img/photos/','public');
+            $image->lien = $request->file('img')->hashName();
+        }
+        $image->cat_id = $request->catid; 
+        $image->save();
+
+        return redirect()->route('image.index')->with('success','Image bien modifiée'); 
     }
 
     /**

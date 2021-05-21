@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('nom'); 
             $table->string('lien'); 
-            $table->foreignId('cat_id')->constrained('categories','id'); 
+            $table->foreignId('cat_id')->constrained('categories','id')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

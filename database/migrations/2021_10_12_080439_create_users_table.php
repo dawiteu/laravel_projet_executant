@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('prenom'); 
             $table->integer('age');
-            $table->foreignId('avatar_id')->constrained('avatars', 'id'); 
+            $table->foreignId('avatar_id')->constrained('avatars', 'id')->default('1')->onDelete('cascade'); 
             $table->foreignId('role_id')->constrained('roles', 'id'); 
             $table->timestamps();
         });

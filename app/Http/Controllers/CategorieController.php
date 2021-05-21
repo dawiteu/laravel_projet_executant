@@ -93,6 +93,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete(); 
+        return redirect()->route('categorie.index')->with('success', 'Catégorie et image(s) associée(s) supprimées.');
     }
 }

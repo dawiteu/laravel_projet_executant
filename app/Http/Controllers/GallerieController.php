@@ -14,4 +14,10 @@ class GallerieController extends Controller
         return view('admin.gallerie.index', compact('cats'));
 
     }
+
+    public function show($id){
+        $gallerie = Categorie::where('id', $id)->first(); 
+        $imgs = Image::where('cat_id', $id)->paginate(1); 
+        return view('admin.gallerie.show', compact('gallerie', 'imgs')); 
+    }
 }

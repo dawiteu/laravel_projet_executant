@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/categorie', CategorieController::class);
     Route::resource('/admin/user', UserController::class); //,'isAdmin'   
     Route::get('/admin/gallerie', [GallerieController::class, 'index'])->name('gallerie');  
+    Route::get('/admin/gallerie/{id}', [GallerieController::class, 'show'])->name('gallerie.show');  
 });
 
 
