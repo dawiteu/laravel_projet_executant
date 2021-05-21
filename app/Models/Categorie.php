@@ -10,6 +10,11 @@ class Categorie extends Model
     use HasFactory;
 
     public function images(){
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'cat_id');
     }
+
+    public function firstimg(){ 
+        return $this->hasOne('App\Models\Image', 'cat_id')->oldest(); 
+    }
+
 }

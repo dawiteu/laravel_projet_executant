@@ -151,7 +151,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('abc')">
+            <x-responsive-nav-link :href="route('gallerie')" :active="request()->routeIs('gallerie')">
                 {{ __('Galerie') }}
             </x-responsive-nav-link>
 

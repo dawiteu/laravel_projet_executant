@@ -7,6 +7,7 @@ use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GallerieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/admin/image', ImageController::class);
     Route::resource('/admin/categorie', CategorieController::class);
-    Route::resource('/admin/user', UserController::class); //,'isAdmin'    
+    Route::resource('/admin/user', UserController::class); //,'isAdmin'   
+    Route::get('/admin/gallerie', [GallerieController::class, 'index'])->name('gallerie');  
 });
 
 
