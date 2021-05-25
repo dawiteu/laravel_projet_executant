@@ -17,18 +17,22 @@ class UserController extends Controller
 
     public function edit(User $user){
         $roles = Role::all();
-        return view('admin.user.edit', compact('user', 'roles')); 
+        $avs = Avatar::all();
+        return view('admin.user.edit', compact('user', 'roles', 'avs')); 
     }
 
     public function update(Request $request, User $user){
-        $this->authorize('isRealUser', $user); 
 
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'prenom' => 'required|string|max:255',
-            'dated' =>   'required|numeric|min:1902|max:2021', // oui oui pas top le 2021
-        ]);
+        //$this->authorize('isRealUser', $user); 
+
+            $request->validate([
+                'nom' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255',
+                'prenom' => 'required|string|max:255',
+                'dated' =>   'required|numeric|min:1902|max:2021', // oui oui pas top le 2021
+            ]);
+
+            //dd($user->avatar_id);
 
             $avimg = $user->avatar_id; 
 
@@ -49,7 +53,7 @@ class UserController extends Controller
             $query = DB::select('select id from avatars where id = '.$av->id.'', [1]); 
             $user->avatar_id = $query[0]->id;
         }else{
-            $user->avatar_id = $avimg; 
+            $user->avatar_id = $request->avatar; 
         }
 
         $user->save(); 

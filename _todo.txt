@@ -1,0 +1,16 @@
+// TO DO 
+
+Edut user controller: 
+ajouter en js le changement automatique de l'avatar 
+
+Créer les sections BLOG avec CRUD (wemb  et admin avec le pouvoitr (ROLE > 3*))
+
+
+// DO 
+
+Webmaster (role id2)
+
+
+
+* Les roles 1 (admin) et 2 (webmaster) sont avec des pouvoir (faire une fonction a partir de role > 3 ) 
+

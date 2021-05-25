@@ -48,7 +48,8 @@
                                         </p>
                                     @enderror
                                 </div>
-
+                                
+                                @admin
                                 <div class="flex flex-col">
                                     <label for="role">Role: </label>
                                     <select name="role">
@@ -57,15 +58,20 @@
                                         @endforeach
                                     </select>
                                 </div>
-
+                                @endadmin
 
                                 <br/>
                                 <div class="flex flex-col">
                                     
                                     <label for="img">Avatar:</label>
                                     
-                                    <img class="w-32 h-32 rounded-md mx-auto" src="{{ asset('img/avs/'.$user->avatar->name)}}" />
+                                    <img id="imgavth" class="w-32 h-32 rounded-md mx-auto" src="{{ asset('img/avs/'.$user->avatar->name)}}" />
 
+                                    <select name="avatar" id="selavatar">
+                                        @foreach ($avs as $av)
+                                            <option value="{{$av->id}}" {{ $av->id == $user->avatar_id ? 'selected' : ''}}>{{$av->nom}}</option>
+                                        @endforeach
+                                    </select>
 
                                     <input type="file" name="img" value="{{$user->avatar->name}}" />
                                     <p class="text-green-500 ">

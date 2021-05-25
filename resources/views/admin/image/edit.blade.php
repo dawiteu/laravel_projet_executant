@@ -20,7 +20,7 @@
 
                         <div class="flex flex-col">
                             <label for="img">Image: </label>
-                            <input type="file" name="img" class="m-0" value="{{$image->img}}" /> 
+                            <input type="file" name="img" class="m-0" /> 
                             <p class="text-green-500 ">
                                 <small>Ne pas uploader de nouvelle image si que le nom change.</small>
                             </p>

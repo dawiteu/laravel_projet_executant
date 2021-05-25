@@ -57,8 +57,9 @@ class RegisteredUserController extends Controller
             $query = DB::select('select id from avatars where id = '.$av->id.'', [1]); 
             $imgid = $query[0]->id;
         }else{
-            $imgid = 1;
+            $imgid = $request->av1;
         }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

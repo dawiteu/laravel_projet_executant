@@ -39,10 +39,7 @@ class ImageController extends Controller
      */
     public function store(ImageRequest $request)
     {
-        
-
         $image = new Image(); 
-
 
         $image->nom = $request->nom; 
         if ($request->file('img') != NULL) {
@@ -85,12 +82,18 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(ImageRequest $request, Image $image)
+    public function update(Request $request, Image $image)
     {
+        $request->validate([
+            'nom' => 'required'
+        ]);
+
         $image->nom = $request->nom; 
         if ($request->file('img') != NULL) {
             $request->file('img')->storePublicly('img/photos/','public');
             $image->lien = $request->file('img')->hashName();
+        }else{
+            $image->nom = $image->nom;
         }
         $image->cat_id = $request->catid; 
         $image->save();

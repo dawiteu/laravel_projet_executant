@@ -14,7 +14,10 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/myscript.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <div class="relative flex min-h-screen bg-gray-200">
