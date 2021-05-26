@@ -26,7 +26,14 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('isRealUser', function($online, $user){
-            return $online->id == $user->id || $online->role_id == 1; // admin; 
+            return (($online->id == $user->id) || ($online->role_id == 1)); // admin; 
+
+            // if($online->role_id == 1){
+            //     return true; // admin ; 
+            // }else if($online->id == $user->id){
+            //     return true; 
+            // }
+
         });
 
 

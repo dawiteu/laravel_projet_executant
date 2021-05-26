@@ -125,6 +125,12 @@ class AvatarController extends Controller
     }
 
 
+    public function getAvatar(Avatar $id){
+        return view('admin.avatar.showav', compact('id')); 
+    }
+
+
+
     //marche pas 
     public function download($avatar){ 
         return Storage::disk('public')->download('/img/avs/'. $avatar);

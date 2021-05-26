@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user){
 
-        //$this->authorize('isRealUser', $user); 
+        $this->authorize('isRealUser', $user); 
 
             $request->validate([
                 'nom' => 'required|string|max:255',

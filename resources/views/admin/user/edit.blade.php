@@ -64,9 +64,9 @@
                                 <div class="flex flex-col">
                                     
                                     <label for="img">Avatar:</label>
-                                    
-                                    <img id="imgavth" class="w-32 h-32 rounded-md mx-auto" src="{{ asset('img/avs/'.$user->avatar->name)}}" />
-
+                                    <div id="avimg">
+                                        <img id="imgavth" class="w-32 h-32 rounded-md mx-auto" src="{{ asset('img/avs/'.$user->avatar->name)}}" />
+                                    </div>
                                     <select name="avatar" id="selavatar">
                                         @foreach ($avs as $av)
                                             <option value="{{$av->id}}" {{ $av->id == $user->avatar_id ? 'selected' : ''}}>{{$av->nom}}</option>

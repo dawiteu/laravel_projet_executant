@@ -13,19 +13,22 @@ $(function(){
 
     if(selectAvatar){
         $(selectAvatar).on('change', function(){
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            //     }
-            // });
-            
-            //console.log(selectAvatar.value);
-
-            $.post({
-                //url: "{{ route('admin.user.edit', $user->id) }}",
-                data: selectAvatar.value,
+            let link = window.location.pathname; // '/admin/user/3/edit'; 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.get({
+                url: '/admin/showavatar/'+selectAvatar.value,
+                data: { 
+                    "id": selectAvatar.value,
+                    "_token": "{{ csrf_token() }}",
+                },
                 success: function (data){
                     console.log(data);
+                    //console.log(window.location.pathname);
+                    $("#avimg").html(data);
                 },
                 error: function (data){
                     console.log(data);

@@ -1,0 +1,1 @@
+<img id="imgavth" class="w-32 h-32 rounded-md mx-auto" src="{{asset('img/avs/'.$id->name)}}" alt="{{$id->nom}}">

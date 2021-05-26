@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/avatar', AvatarController::class);
     Route::get('/admin/avatar/download/{id}', [AvatarController::class, 'download'])->name('avatar.download'); 
+    Route::get('/admin/showavatar/{id}', [AvatarController::class, 'getAvatar'])->name('avatar.get');
 
     Route::resource('/admin/image', ImageController::class);
     Route::resource('/admin/categorie', CategorieController::class);
