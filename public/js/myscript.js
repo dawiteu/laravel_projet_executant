@@ -26,14 +26,14 @@ $(function(){
                     "_token": "{{ csrf_token() }}",
                 },
                 success: function (data){
-                    console.log(data);
+                    //console.log(data);
                     //console.log(window.location.pathname);
                     $("#avimg").html(data);
-                },
-                error: function (data){
-                    console.log(data);
-                }
-            })
+                }//,
+                // error: function (data){
+                //     console.log(data);
+                // }
+            });
         });
         // selectAvatar.addEventListener("change", () => {
         //     let newimg = selectAvatar.value; 

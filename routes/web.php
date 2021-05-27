@@ -8,6 +8,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GallerieController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\GallerieController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/avatar', AvatarController::class);
@@ -36,7 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/gallerie/{id}', [GallerieController::class, 'show'])->name('gallerie.show');  
 });
 
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('news.add');
 
+Route::get('/unsub/{email}', [NewsletterController::class, 'destroy'])->name('news.del'); 
 
 
 Route::get('/admin/dashboard', function () {
